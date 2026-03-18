@@ -70,8 +70,9 @@ if (!shardNames.includes("shard2rs")) {
 }
 sh.enableSharding("university");
 db = db.getSiblingDB("university");
-db.students.createIndex({ student_id: 1 }, { unique: true });
+db.students.createIndex({ student_id: "hashed" });
 sh.shardCollection("university.students", { student_id: "hashed" });
+db.students.createIndex({ student_id: 1 }, { unique: true });
 '
 
 echo "MongoDB sharded cluster initialized."

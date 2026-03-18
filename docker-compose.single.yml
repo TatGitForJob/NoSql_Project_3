@@ -1,0 +1,9 @@
+services:
+  mongo-single:
+    image: mongo:7.0
+    container_name: nosql-single
+    command: ["mongod", "--bind_ip_all", "--port", "27021"]
+    ports:
+      - "27021:27021"
+    volumes:
+      - ./mongo-data-single:/data/db
